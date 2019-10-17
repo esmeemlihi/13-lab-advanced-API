@@ -1,0 +1,16 @@
+pages = []
+i = 2
+
+data = getAuth('/repos/ironhack-labs/data-labs/forks')
+pages.append(data)
+
+while len(data) > 0:
+    page_nr = '?page='+str(i)
+    print(page_nr)
+    data = getAuth('/repos/ironhack-labs/data-labs/forks{}'.format(page_nr))
+    pages.append(data)
+    i += 1
+    
+pages_1 = [y for x in pages for y in x]
+
+pages_1
